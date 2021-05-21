@@ -7,6 +7,8 @@
 # Preparation
 # ---------------
 
+# rm(list = ls())
+
 # Load the packages
 # Please do NOT load igraph yet.
 library(statnet)
@@ -39,7 +41,7 @@ karate_net
 
 # Simple visualization 
 ggnet2(karate_net, label = TRUE)
-?ggnet2
+# ?ggnet2
 
 # Add some color
 ggnet2(net = karate_net, label = TRUE, node.color = "coral2") 
@@ -64,6 +66,8 @@ gden(karate_net, mode = "graph")
 # -------------------------
 # Explore actor positions
 # -------------------------
+
+
 
 # Get degree centrality
 degree <- degree(karate_net, gmode = "graph")
@@ -155,11 +159,12 @@ igraph::plot.igraph(karate_inet, vertex.color = communities$membership,
 # ----------------------------
 
 # Get node attributes
-faction <- read.csv("Karate club attributes 2020_05_20.csv", header = TRUE,
+faction <- read.csv("Karate club attributes 2021_05_21.csv", header = TRUE,
                     stringsAsFactors = FALSE)
 
 # Inspect node attributes
 head(faction)
+tail(faction)
 
 # Add attributes to our network object
 karate_net %v% "faction" <- faction[,2] 

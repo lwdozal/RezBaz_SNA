@@ -1,5 +1,5 @@
 # RezBaz_SNA
-RezBaz 2022 Network Analysis workshop
+RezBaz Network Analysis workshop
 May 24, 2022
 
 Laura Dozal - iSchool

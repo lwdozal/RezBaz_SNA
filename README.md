@@ -11,6 +11,6 @@ Click on the green code button at the top right-hand side
 
 Download the zip file
 
-Open the 'Intro to network analysis code 2021_05_21' in Rstudio 
+Open the 'SNA_Script_ResBaz_2022.R' in Rstudio 
 
 Follow along

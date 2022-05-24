@@ -19,9 +19,8 @@ library(GGally)
 adjacency <- read.csv("Karate club adj 2021_05_21.csv", 
                      header = TRUE, stringsAsFactors = FALSE, row.names = 1)
 
-
 # Inspect the data 
-head(adjacency) # head(...)  shows the first rows of a dataset
+adjacency # head(...)  shows the first rows of a dataset
 
 # -----------------------
 # Get a network object
@@ -29,7 +28,7 @@ head(adjacency) # head(...)  shows the first rows of a dataset
 
 # Transform the data into network format 
 karate_net <- network(adjacency, matrix.type = "adjacency", 
-                      directed = FALSE, ignore.eval = TRUE)
+                      directed = TRUE, ignore.eval = TRUE)
 
 # Look at the network object 
 karate_net
@@ -44,7 +43,9 @@ ggnet2(karate_net, label = TRUE)
 # ?ggnet2
 
 # Add some color
-ggnet2(net = karate_net, label = TRUE, node.color = "coral2") 
+ggnet2(net = karate_net, label = TRUE, node.color = "coral2") #"blue", "green"
+
+#### Back to presentation ####
 
 # -------------------------------
 # Explore the network structure
@@ -53,7 +54,7 @@ ggnet2(net = karate_net, label = TRUE, node.color = "coral2")
 # Save names of club members 
 club_members <- network.vertex.names(karate_net)
 
-# Get components
+# Get components - how many clusters do we have?
 components(karate_net)
 
 # Find isolates
@@ -68,16 +69,21 @@ gden(karate_net, mode = "graph")
 # -------------------------
 
 
-
 # Get degree centrality
 degree <- degree(karate_net, gmode = "graph")
-names(degree) <- network.vertex.names(karate_net)
-sort(degree)
+names(degree) <- network.vertex.names(karate_net) #include names
+sort(degree) #look at the number of connections
 
 # Explore degree distribution
 hist(degree, breaks = 12, main = "Degree distribution", xlab = "Degree")
 
 # Get eigenvector centrality
+#####
+# Eigenvector Centrality is an algorithm that measures the transitive influence of nodes. 
+# Relationships originating from high-scoring nodes contribute more to the score of a node 
+# than connections from low-scoring nodes. A high eigenvector score means that a node is 
+# connected to many nodes who themselves have high scores.
+####
 eigen <- evcent(karate_net, gmode = "graph")
 names(eigen) <- network.vertex.names(karate_net)
 sort(eigen)
@@ -92,6 +98,11 @@ between <- betweenness(karate_net, gmode = "graph")
 names(between) <- network.vertex.names(karate_net)
 sort(between)
 
+
+#### Back to presentation ####
+
+# -----------------------
+# Looking at subgroups
 # -----------------------
 # Get an igraph object
 # -----------------------
@@ -168,11 +179,14 @@ tail(faction)
 
 # Add attributes to our network object
 karate_net %v% "faction" <- faction[,2] 
+karate_net
 
 # Visualize the network with colors according to attributes
 # Add some color
 ggnet2(net = karate_net, label = TRUE, node.color = "faction", 
        color.palette = c("1" = "dodgerblue1", "2" = "hotpink"))
 
-
-
+# 
+# corrdinates <- gplot.layout.fruchtermanreingold(karate_net, NULL)
+# karate_net %V% "x" <- corrdinates[,1]
+# karate_net %V% "y" <- corrdinates[,2]

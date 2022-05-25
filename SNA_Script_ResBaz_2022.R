@@ -24,7 +24,7 @@ library(GGally)
 # Read the adjacency matrix  
 
 # Inspect the data 
-# head(...)  shows the first rows of a dataset
+ # head(...)  shows the first rows of a dataset
 
 # -----------------------
 # Get a network object
@@ -36,12 +36,15 @@ library(GGally)
 # Look at the network object 
 
 
+
 # -----------------------
 # Visualize the network
 # -----------------------
 
+
 # Simple visualization 
 # ?ggnet2
+
 
 # Add some color
 
@@ -52,13 +55,16 @@ library(GGally)
 # -------------------------------
 
 # Save names of club members 
+# club_members <- network.vertex.names(graph_karate_net)
 
 # Get components - how many clusters do we have?
 
 # Find isolates
-
+# isolate <- isolates(graph_karate_net)
 
 # Get densitiy
+# gden(graph_karate_net) #, mode = "graph")
+
 
 # -------------------------
 # Explore actor positions
@@ -80,7 +86,6 @@ library(GGally)
 
 
 # Get Closness centrality
-
 
 # Get betweenness centrality
 
@@ -108,11 +113,10 @@ library(GGally)
 
 # Simplify igraph object
 
-
 # Look at the igraph object
-
-# igraph::V(karate_inet)	# This shows you the vertex set. 
-# igraph::E(karate_inet)	# This shows you the edge set. 
+# 
+# igraph::V(graph_karate_net)	# This shows you the vertex set.
+# igraph::E(graph_karate_net)	# This shows you the edge set.
 
 # Plot the network
 
@@ -121,6 +125,8 @@ library(GGally)
 # -----------------------
 
 # Find all cliques with a minimum of three members
+
+
 # Number of cliques of size 3.  
 
 # Find all cliques with a minimum of four members
@@ -137,7 +143,6 @@ library(GGally)
 
 
 # Visualize the network with colors according to communities
-
 
 # ----------------------------
 # Visualize node attributes

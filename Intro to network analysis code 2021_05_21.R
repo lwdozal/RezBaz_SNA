@@ -26,9 +26,12 @@ adjacency # head(...)  shows the first rows of a dataset
 # Get a network object
 # -----------------------
 
+# Get the matrix (matrix is another object type, like network object)
+adj_matrix <- as.matrix(adjacency)
+
 # Transform the data into network format 
-karate_net <- network(adjacency, matrix.type = "adjacency", 
-                      directed = TRUE, ignore.eval = TRUE)
+karate_net <- network(adj_matrix, matrix.type = "adjacency", 
+                      directed = FALSE, ignore.eval = TRUE) 
 
 # Look at the network object 
 karate_net
@@ -39,7 +42,7 @@ karate_net
 # -----------------------
 
 # Simple visualization 
-ggnet2(karate_net, label = TRUE)
+ggnet(karate_net, label = TRUE)
 # ?ggnet2
 
 # Add some color
